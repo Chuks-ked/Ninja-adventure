@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
-import Jobs from '../views/Jobs.vue'
+import Jobs from '../views/jobs/Jobs.vue'
+import JobDetails from '../views/jobs/JobDetails.vue'
+import NotFound from '../views/NotFound.vue'
 
 
 const routes = [
@@ -19,6 +21,23 @@ const routes = [
     path: '/jobs',
     name: 'jobs',
     component: Jobs
+  },
+  {
+    path: '/jobs/:id',
+    name: 'JobDetails',
+    component: JobDetails,
+    props: true,
+  },
+  //redirect
+  {
+    path: '/all-jobs',
+    redirect: '/jobs',
+  },
+  //404
+  {
+    path: '/:catchAll(.*)',
+    name: 'NotFound',
+    component: NotFound,
   }
 ]
 
